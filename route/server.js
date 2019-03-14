@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
     res.json({ status: 'success' });
 })
 
+router.get('/funny', (req, res) => {
+    res.json({ status: 'funny' })
+})
+
 router.post('/:country', (req, res) => {
     const { name } = req.body
     axios
