@@ -6,10 +6,13 @@ router.get('/', (req, res) => {
     res.json({ status: 'success' });
 })
 
-router.get('/:country', (req, res) => {
+router.post('/:country', (req, res) => {
+    const { name } = req.body
     axios
-        .get(`https://restcountries.eu/rest/v2/name/${req.body.name}`)
-        .then(country => req.json(country))
+        .get(`https://restcountries.eu/rest/v2/name/${name}`)
+        .then(country => {
+            res.json(country.data)
+        })
         .catch(err => {
             console.log(err)
         })
